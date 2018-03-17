@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".FingerprintActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +27,10 @@
         <activity
             android:name=".OptionsActivity"
             android:label="@string/title_activity_options"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RecommendedActivity"
+            android:label="@string/title_activity_recommended"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

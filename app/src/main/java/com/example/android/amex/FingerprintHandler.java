@@ -56,6 +56,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         Toast.makeText(context, "Authentication Successful!", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(context,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 }

@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.android.amex.OptionsActivity"
     tools:showIn="@layout/app_bar_options">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart1"
+            android:layout_width="match_parent"
+            android:layout_height="00dp"
+            android:visibility="invisible"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart2"
+            android:layout_width="match_parent"
+            android:layout_height="00dp"
+            android:visibility="invisible"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart3"
+            android:layout_width="match_parent"
+            android:layout_height="00dp"
+            android:visibility="invisible"/>
+    </LinearLayout>
+</ScrollView>
