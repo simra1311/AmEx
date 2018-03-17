@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "991964206009",
+    "firebase_url": "https://fir-61517.firebaseio.com",
+    "project_id": "fir-61517",
+    "storage_bucket": "fir-61517.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991964206009:android:196f9380b0bb14d3",
+        "android_client_info": {
+          "package_name": "com.example.android.amex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991964206009-6evt4rdrkesk5vsgevh1sscpdj56lrnq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.amex",
+            "certificate_hash": "eea0e3ad6808507e8f41c8ce528f92d80df34995"
+          }
+        },
+        {
+          "client_id": "991964206009-momt8khbuhptt8tufbmrn9aomptcs9tv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJw-N_ufQHmXcdsl8R_pseEbe2LIcjXDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991964206009-momt8khbuhptt8tufbmrn9aomptcs9tv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
