@@ -7,6 +7,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class Data {
 
-    public static final int NUM_CATEGORIES = 5;
+    public static final int NUM_CATEGORIES=5;
     public static final int HOUSE = 0;
     public static final int CAR = 1;
     public static final int CLOTHES = 2;
@@ -27,10 +28,16 @@ public class Data {
     public static final int SPORTS = 7;
     public static final int HEALTH = 8;
     public static final int GIFTS = 9;
+    private DatabaseReference mDatabase;
 
     public static final String[] categories = {"House","Car","Clothes","Communications","Food","Entertainment","Transport","Sports","Health","Gifts"};
 
     private float[] expense = new float[10];
+
+    public Data()
+    {
+
+    }
 
     public Data(float expense[])
     {

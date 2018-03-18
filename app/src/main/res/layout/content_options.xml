@@ -31,10 +31,5 @@
             android:layout_height="00dp"
             android:visibility="invisible"/>
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/piechart3"
-            android:layout_width="match_parent"
-            android:layout_height="00dp"
-            android:visibility="invisible"/>
     </LinearLayout>
 </ScrollView>

@@ -186,13 +186,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
             Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
+            intent.putExtra("NAME", email);
             startActivity(intent);
         }
     }
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return  true;
+      //  return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
