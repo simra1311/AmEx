@@ -75,7 +75,7 @@
         android:id="@+id/HelpSubmit"
         android:textSize="24sp"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/type2"
+        android:layout_centerInParent="true"
         android:onClick="help" />
 
     <TextView
@@ -88,6 +88,7 @@
         android:textColor="?attr/actionMenuTextColor"
         android:layout_below="@+id/help"
         android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
         android:layout_marginStart="47dp"
         android:layout_marginTop="27dp" />
 

@@ -47,10 +47,11 @@ public class OptionsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
+//        Intent intent = getIntent();
+//        Bundle bundle = intent.getExtras();
 
-        uName = intent.getStringExtra("NAME");
+        //uName = intent.getStringExtra("NAME");
+        uName = UserInformation.getName();
         Log.i("OptionsActivity",uName);
         String[] part = uName.split("@");
         uName = part[0];
@@ -276,12 +277,12 @@ public class OptionsActivity extends AppCompatActivity
 
         if (id == R.id.nav_expenses) {
             Intent intent = new Intent(OptionsActivity.this, OptionsActivity.class);
-            intent.putExtra("NAME",uName);
+            //intent.putExtra("NAME",uName);
             startActivity(intent);
 
         } else if (id == R.id.nav_budget) {
             Intent intent = new Intent(OptionsActivity.this, RecommendedActivity.class);
-            intent.putExtra("NAME",uName);
+            //intent.putExtra("NAME",uName);
             startActivity(intent);
 
         } else if (id == R.id.nav_contact) {

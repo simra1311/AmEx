@@ -41,13 +41,14 @@ public class RecommendedActivity extends AppCompatActivity
         setContentView(R.layout.activity_recommended);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-
-        uName = intent.getStringExtra("NAME");
-        Log.i("OptionsActivity",uName);
-        String[] part = uName.split("@");
-        uName = part[0];
+//        Intent intent = getIntent();
+//        Bundle bundle = intent.getExtras();
+//
+//        uName = intent.getStringExtra("NAME");
+        Log.i("OptionsActivity",UserInformation.getName());
+        uName = UserInformation.getName();
+        //String[] part = uName.split("@");
+        //uName = part[0];
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
 
@@ -192,18 +193,18 @@ public class RecommendedActivity extends AppCompatActivity
 
         if (id == R.id.nav_expenses) {
             Intent intent = new Intent(RecommendedActivity.this, OptionsActivity.class);
-            intent.putExtra("NAME",uName);
+            //intent.putExtra("NAME",uName);
             startActivity(intent);
 
         } else if (id == R.id.nav_budget) {
             Intent intent = new Intent(RecommendedActivity.this, RecommendedActivity.class);
-            intent.putExtra("NAME",uName);
+            //intent.putExtra("NAME",uName);
             startActivity(intent);
 
         } else if (id == R.id.nav_contact) {
             Toast.makeText(RecommendedActivity.this,"Contact",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(RecommendedActivity.this,ContactActivity.class);
-            intent.putExtra("NAME",uName);
+            //intent.putExtra("NAME",uName);
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {

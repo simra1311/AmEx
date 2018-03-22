@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText mName;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mName = findViewById(R.id.name);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -151,28 +154,36 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        UserInformation.setEmail(mEmailView.getText().toString());
+        UserInformation.setPassword(mPasswordView.getText().toString());
+        UserInformation.setName(mName.getText().toString());
+
+        Log.i("main activity",UserInformation.getPassword());
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(UserInformation.getPassword()) && !isPasswordValid(UserInformation.getPassword())) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(UserInformation.getEmail())) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if (!isEmailValid(UserInformation.getEmail())) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
+        } else if (!isPasswordValid(UserInformation.getPassword())){
+            mPasswordView.setError("Invalid Password");
+            focusView = mPasswordView;
+            cancel = true;
+
         }
 
         if (cancel) {
@@ -183,23 +194,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(UserInformation.getEmail(), UserInformation.getPassword());
             mAuthTask.execute((Void) null);
             Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
-            intent.putExtra("NAME", email);
+            //intent.putExtra("NAME", email);
             startActivity(intent);
         }
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return  true;
-      //  return email.contains("@");
+
+        //return  true;
+        return email.contains("@") && email.contains(".");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
+
+        return password.length() >= 6;
     }
 
     /**
