@@ -8,14 +8,32 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class RecommendedActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int REQUEST_INVITE = 10;
+    private boolean flip = false;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference myRef;
+    float[] value1 = new float [6];
+    float[] value2 = new float[6] ;//= {800,100,900,200,300,300,400,500,200,200};
+    float[] value3 = new float[6] ;//= {800,100,900,200,300,300,400,500,200,200};
+    float[] average  = {800,100,900,200,300,300,400,500,200,200};
     String uName;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +41,43 @@ public class RecommendedActivity extends AppCompatActivity
         setContentView(R.layout.activity_recommended);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
         uName = intent.getStringExtra("NAME");
+        Log.i("OptionsActivity",uName);
+        String[] part = uName.split("@");
+        uName = part[0];
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.i("Options Activity","calling");
+                showData(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        PieChart pieChart = (PieChart) findViewById(R.id.piechart);
+        pieChart.setUsePercentValues(true);
+//
+        Data data1 = new Data(average);
+//        Data data2 = new Data(value2);
+//        Data data3 = new Data(value3);
+//
+        pieChart.setData(data1.getPieData());
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setTransparentCircleRadius(30f);
+        pieChart.setHoleRadius(30f);
+        //pieChart.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        pieChart.setDescription("Your budget statistics");
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +98,61 @@ public class RecommendedActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
+    private void showData(DataSnapshot dataSnapshot) {
+        for(DataSnapshot ds: dataSnapshot.getChildren()) {
+            String str = ds.getValue().toString();
+
+            String[] s = str.split(",");
+            String name;
+            int j = s[s.length - 1].indexOf('=');
+            name = s[s.length - 1].substring(j + 1, s[s.length - 1].length() - 1);
+
+            if (name.equals(uName)) {
+                //float[] value = new float[18];
+                for (int i = 0; i + 2 < s.length - 1; i += 3) {
+
+                    // System.out.println(s[i]);
+
+                    j = s[i].indexOf('=');
+                    value1[i / 3] = Float.parseFloat(s[i].substring(j + 1));
+
+                    j = s[i + 1].indexOf('=');
+                    value2[i / 3] = Float.parseFloat(s[i + 1].substring(j + 1));
+
+                    j = s[i + 2].indexOf('=');
+                    value3[i / 3] = Float.parseFloat(s[i + 2].substring(j + 1));
+                    Log.i("OptionsActivity", "value: " + value1[i / 3]);
+
+                    // System.out.println(value[i]);
+
+                }
+
+                for(int i = 0; i<6; i++)
+                {
+                    average[i/3] = (value1[i]+value1[i]+value1[i])/3;
+                   // System.out.println(average[i/3]);
+
+                }
+                makePie();
+                break;
+            }
+        }}
+    public void makePie(){
+        Log.i("Options","Makepie called");
+        PieChart pieChart = (PieChart) findViewById(R.id.piechart);
+        pieChart.setUsePercentValues(true);
+
+        Data data1 = new Data(average);
+
+        pieChart.setData(data1.getPieData());
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setTransparentCircleRadius(30f);
+        pieChart.setHoleRadius(30f);
+
+        pieChart.setDescription("Your budget statistics");
+
+    }
+            @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -96,6 +202,9 @@ public class RecommendedActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_contact) {
             Toast.makeText(RecommendedActivity.this,"Contact",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(RecommendedActivity.this,ContactActivity.class);
+            intent.putExtra("NAME",uName);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
             //onInviteClicked();

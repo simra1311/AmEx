@@ -33,7 +33,11 @@
             android:name=".RecommendedActivity"
             android:label="@string/title_activity_recommended"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".complaint" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".help" />
+        <activity android:name=".ContactActivity"></activity>
     </application>
 
 </manifest>

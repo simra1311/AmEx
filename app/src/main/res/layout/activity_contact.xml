@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.android.amex.ContactActivity">
+
+    <TextView
+        android:text="Select appropriate form option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/textView"
+        android:textStyle="bold|italic"
+        android:textSize="26sp" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/choice"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/radiogroup">
+
+        <RadioButton
+            android:text="Feedback Form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButton2"
+            android:layout_alignEnd="@+id/radioButton2"
+            android:layout_marginTop="48dp"
+            android:id="@+id/radioButton3"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:text="Help Form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButton3"
+            android:layout_alignStart="@+id/radioButton3"
+            android:layout_marginTop="44dp"
+            android:id="@+id/radioButton4"
+            android:textStyle="italic"
+            android:textSize="18sp" />
+
+
+        <RadioButton
+            android:text="Complaint Form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:id="@+id/radioButton2"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:layout_below="@+id/textView"
+            android:layout_alignStart="@+id/textView" />
+    </RadioGroup>
+
+</RelativeLayout>

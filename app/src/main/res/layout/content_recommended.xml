@@ -8,4 +8,10 @@
     tools:context="com.example.android.amex.RecommendedActivity"
     tools:showIn="@layout/app_bar_recommended">
 
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
+
 </LinearLayout>

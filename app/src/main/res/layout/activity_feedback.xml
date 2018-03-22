@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_feedback"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.android.amex.Feedback">
+
+    <TextView
+        android:text="Feedback Form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView2"
+        android:textStyle="normal|bold|italic"
+        android:textSize="28sp"
+        android:textColor="@android:color/background_dark"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="49dp"
+        android:id="@+id/feedback"
+        android:textSize="24sp"
+        android:onClick="feedback" />
+
+    <TextView
+        android:text="Please tell us about your experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:id="@+id/textView3"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="21dp"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/experience"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@+id/textView3"
+        android:textColor="?attr/colorAccent"
+        android:textSize="18sp"
+        android:lineSpacingExtra="8sp"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:text="Any Suggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:id="@+id/textView4"
+        android:textSize="18sp"
+        android:textColor="@android:color/background_dark"
+        android:layout_below="@+id/experience"
+        android:layout_alignStart="@+id/experience" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginTop="34dp"
+        android:id="@+id/suggestion"
+        android:layout_alignEnd="@+id/experience"
+        android:textColor="?attr/colorAccent" />
+
+</RelativeLayout>

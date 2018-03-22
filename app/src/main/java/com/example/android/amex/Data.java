@@ -59,7 +59,7 @@ public class Data {
         }
 
         PieDataSet dataSet = new PieDataSet(yvalues, "Budget");
-        dataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
 
         ArrayList<String> xVals = new ArrayList<String>();
         for(int i = 0; i<NUM_CATEGORIES ; i++)

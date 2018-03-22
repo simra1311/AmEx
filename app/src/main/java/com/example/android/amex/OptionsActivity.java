@@ -281,10 +281,13 @@ public class OptionsActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_budget) {
             Intent intent = new Intent(OptionsActivity.this, RecommendedActivity.class);
+            intent.putExtra("NAME",uName);
             startActivity(intent);
 
         } else if (id == R.id.nav_contact) {
             Toast.makeText(OptionsActivity.this,"Contact",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(OptionsActivity.this, ContactActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
             //onInviteClicked();
